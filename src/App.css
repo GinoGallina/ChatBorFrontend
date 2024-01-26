@@ -1,42 +1,106 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.main-chat {
+    /* background: linear-gradient(135deg, #4a154b, #1a1a1a); */
+background: linear-gradient(to bottom, #8b795e, #6b5840);    height: 100vh;
+    display: flex;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.titulo-chat {
+    font-family: 'Montserrat, sans-serif';
+    font-weight: 700;
+    font-size: 60px;
+    color: white;
+    text-shadow: '2px 2px 4px rgba(0, 0, 0, 0.5)';
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.welcome-title {
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.box {
+    background: linear-gradient(to bottom, #e3e3ab, #c0ad7e);
+    overflow-y: auto;
+    max-height: 950px;
 }
 
-.card {
-  padding: 2em;
+/* Estilo para cada mensaje */
+.mensaje {
+    background-color: #fff; /* Fondo del mensaje */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+/* max-width: 100%; Ajusta según tu diseño
+} */
+
+/* Estilo para los mensajes del usuario */
+.mensaje-user {
+    background-color: #2196f3; /* Color de fondo para los mensajes del usuario */
+    color: #fff; /* Color del texto en los mensajes del usuario */
+    text-align: left;
 }
 
-.read-the-docs {
-  color: #888;
+/* Estilo para los mensajes del sistema u otros participantes */
+.mensaje-sistem {
+    background-color: #f2f2f2; /* Color de fondo para mensajes del sistema */
+    color: #333; /* Color del texto en mensajes del sistema */
+    text-align: left;
+}
+
+/* Puedes agregar más estilos según tus necesidades, como animaciones, sombras, etc. */
+
+/* Estilo para la barra de escritura */
+.barra-escritura {
+    display: flex;
+    align-items: center;
+    background-color: #eee;
+    padding: 10px;
+}
+
+/* Estilo para el área de texto donde se escribe el mensaje */
+.texto-mensaje {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Estilo para el botón de enviar */
+.boton-enviar {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para el botón de enviar al pasar el ratón */
+.boton-enviar:hover {
+    background-color: #45a049;
+}
+
+
+
+
+/* Estilos para el contenedor */
+.box {
+
+  scrollbar-width: thin; /* Para navegadores Firefox que admiten esta propiedad */
+}
+
+/* Estilos para la barra de desplazamiento en navegadores Webkit (Chrome, Safari) */
+.box::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+.box::-webkit-scrollbar-thumb {
+  background-color: #570b5e; /* Color del "pulgón" de la barra de desplazamiento */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.box::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Color del fondo de la barra de desplazamiento */
 }
