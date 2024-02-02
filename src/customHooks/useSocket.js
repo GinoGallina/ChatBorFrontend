@@ -6,9 +6,9 @@ import { io } from 'socket.io-client'
 import Swal from 'sweetalert2'
 
 export const useSocket = () => {
-    console.log('render el socket')
-
+    console.log('render useSocket')
     const [newMensaje, setNewMensaje] = useState('')
+    const [error, setError] = useState(false)
     const dispatch = useDispatch()
 
     //El MEMO lo agregue yo pero nose
@@ -25,6 +25,7 @@ export const useSocket = () => {
     const sendMensaje = useCallback(
         (e) => {
             e.preventDefault()
+            if (newMensaje == '') return
             dispatch(
                 agregarMensaje({
                     id: uuidv4(),
@@ -41,7 +42,6 @@ export const useSocket = () => {
     )
 
     useEffect(() => {
-        console.log('a')
         socket.on('mensaje', (mensaje) => {
             dispatch(
                 agregarMensaje({
@@ -51,7 +51,6 @@ export const useSocket = () => {
                 }),
             )
         })
-
         socket.on('connect_error', (error) => {
             console.error('Error de conexión:', error)
             Swal.fire({
@@ -60,6 +59,7 @@ export const useSocket = () => {
                 text: 'Algo salió mal! ' + error,
             })
             socket.disconnect()
+            setError(true)
         })
 
         return () => {
@@ -71,5 +71,6 @@ export const useSocket = () => {
         sendMensaje,
         newMensaje,
         setNewMensaje,
+        error,
     }
 }

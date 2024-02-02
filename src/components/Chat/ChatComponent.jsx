@@ -1,3 +1,4 @@
+import { BotonReiniciar } from '../Extra/BotonReiniciar.jsx'
 import { ChatBox } from './ChatBox.jsx'
 
 export const ChatComponent = () => {
@@ -8,6 +9,7 @@ export const ChatComponent = () => {
                     <h1 className='titulo-chat text-center mb-2'>ChatBot</h1>
                     <ChatBox></ChatBox>
                 </div>
+                <BotonReiniciar></BotonReiniciar>
             </main>
         </>
     )

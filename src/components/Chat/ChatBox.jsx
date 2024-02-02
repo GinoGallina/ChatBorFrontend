@@ -2,48 +2,47 @@ import { useSelector } from 'react-redux'
 import { selectMensajes } from '../../redux/chatSlice.js'
 import { useSocket } from '../../customHooks/useSocket.js'
 import { ChatMessage } from './ChatMessage.jsx'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
+import { MensajeError } from '../Extra/MensajeError.jsx'
+import { ChatFooterComponent } from '../Extra/ChatFooterComponent.jsx'
 
 export const ChatBox = () => {
     const mensajes = useSelector(selectMensajes)
-    const { newMensaje, sendMensaje, setNewMensaje } = useSocket()
-
     const contenedorRef = useRef(null)
-    const [autoScroll, setAutoScroll] = useState(true)
-
-    useEffect(() => {
-        console.log('aa')
-        if (autoScroll) {
-            contenedorRef.current.scrollTop = contenedorRef.current.scrollHeight
-        }
-    }, [autoScroll])
+    const { error, sendMensaje, setNewMensaje, newMensaje } = useSocket()
 
     return (
         <div
-            className='bg-white rounded border shadow flex-grow-1 box p-3'
+            className='bg-white rounded border shadow flex-grow-1 box p-3 d-flex flex-column'
             ref={contenedorRef}
         >
-            <ul className='p-3' style={{ listStyle: 'none' }}>
-                {mensajes.map((mensaje) => {
-                    return (
-                        <ChatMessage
-                            key={mensaje.id}
-                            mensaje={mensaje}
-                        ></ChatMessage>
-                    )
-                })}
-            </ul>
-            <form action='' onSubmit={sendMensaje}>
-                <label htmlFor=''>Ingrese mensaje</label>
-                <input
-                    type='text'
-                    name=''
-                    id=''
-                    onChange={(e) => setNewMensaje(e.target.value)}
-                    value={newMensaje}
-                />
-                <button type='submit'>Enviar</button>
-            </form>
+            {error ? (
+                <>
+                    <MensajeError></MensajeError>
+                </>
+            ) : (
+                <>
+                    <ul
+                        className='p-3 flex-grow-1'
+                        style={{ listStyle: 'none' }}
+                    >
+                        {mensajes.map((mensaje) => {
+                            return (
+                                <ChatMessage
+                                    key={mensaje.id}
+                                    mensaje={mensaje}
+                                ></ChatMessage>
+                            )
+                        })}
+                    </ul>
+                    <ChatFooterComponent
+                        contenedorRef={contenedorRef}
+                        sendMensaje={sendMensaje}
+                        setNewMensaje={setNewMensaje}
+                        newMensaje={newMensaje}
+                    ></ChatFooterComponent>
+                </>
+            )}
         </div>
     )
 }
