@@ -1,14 +1,63 @@
-import { Provider } from 'react-redux'
 import './App.css'
 import { ChatComponent } from './components/Chat/ChatComponent.jsx'
-import { store } from './redux/store.js'
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    Navigate,
+} from 'react-router-dom'
+
+import { TipoView } from './components/Tipo/TipoView.jsx'
+import { AdminRoute } from './containers/Admin/AdminRoute.jsx'
+import { ErrorView } from './components/Vistas/ErrorView.jsx'
+
+import 'datatables.net-dt/css/jquery.dataTables.css'
 
 function App() {
     return (
         <>
-            <Provider store={store}>
-                <ChatComponent></ChatComponent>
-            </Provider>
+            <Router>
+                <Routes>
+                    <Route
+                        path='/chat'
+                        element={<ChatComponent></ChatComponent>}
+                    ></Route>
+                    <Route
+                        path='/tipos'
+                        element={
+                            <AdminRoute
+                                element={<TipoView></TipoView>}
+                            ></AdminRoute>
+                        }
+                    ></Route>
+                    <Route
+                        path='/not-found'
+                        element={
+                            <ErrorView
+                                mensaje={'Error, página no encontrada'}
+                            ></ErrorView>
+                        }
+                    ></Route>
+                    <Route
+                        path='/unauthorized'
+                        element={
+                            <ErrorView
+                                mensaje={
+                                    ' Error, no tiene permisos para entrar a esta página'
+                                }
+                            ></ErrorView>
+                        }
+                    ></Route>
+                    <Route
+                        path='/'
+                        element={<Navigate to={'/chat'}></Navigate>}
+                    ></Route>
+                    <Route
+                        path='*'
+                        element={<Navigate to={'/not-found'}></Navigate>}
+                    ></Route>
+                </Routes>
+            </Router>
         </>
     )
 }

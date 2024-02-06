@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { selectMensajes } from '../../redux/chatSlice.js'
+import { selectMensajes } from '../../redux/Slices/chatSlice.js'
 import { useSocket } from '../../customHooks/useSocket.js'
 import { ChatMessage } from './ChatMessage.jsx'
 import { useRef } from 'react'

@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import { reinciarMensajes } from '../../redux/chatSlice.js'
+import { reinciarMensajes } from '../../redux/Slices/chatSlice.js'
 
 export const BotonReiniciar = () => {
     const dispatch = useDispatch

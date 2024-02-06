@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { agregarMensaje } from '../redux/chatSlice.js'
+import { agregarMensaje } from '../redux/Slices/chatSlice.js'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { io } from 'socket.io-client'
