@@ -10,8 +10,7 @@ import {
 import { TipoView } from './components/Tipo/TipoView.jsx'
 import { AdminRoute } from './containers/Admin/AdminRoute.jsx'
 import { ErrorView } from './components/Vistas/ErrorView.jsx'
-
-import 'datatables.net-dt/css/jquery.dataTables.css'
+import { CreateTipoComponent } from './components/Tipo/CreateTipoComponent.jsx'
 
 function App() {
     return (
@@ -27,6 +26,31 @@ function App() {
                         element={
                             <AdminRoute
                                 element={<TipoView></TipoView>}
+                            ></AdminRoute>
+                        }
+                    >
+                        <Route
+                            path='create'
+                            element={
+                                <CreateTipoComponent></CreateTipoComponent>
+                            }
+                        ></Route>
+                        <Route
+                            path=':id'
+                            element={
+                                <AdminRoute
+                                    element={<TipoView></TipoView>}
+                                ></AdminRoute>
+                            }
+                        ></Route>
+                    </Route>
+                    <Route
+                        path='/create'
+                        element={
+                            <AdminRoute
+                                element={
+                                    <CreateTipoComponent></CreateTipoComponent>
+                                }
                             ></AdminRoute>
                         }
                     ></Route>

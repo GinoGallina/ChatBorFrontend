@@ -1,23 +1,71 @@
-// import DataTables, { Config } from 'datatables.net-dt'
-// import { useEffect, useRef } from 'react'
-// export const TipoDataTable = ({ ...props }) => {
-//     const tipoTableRef = useRef(null)
+import { useEffect, useRef } from 'react'
+import $ from 'jquery'
+import { propTypes } from 'react-bootstrap/esm/Image.js'
+import { TipoItem } from './TipoItem.jsx'
 
-//     useEffect(() => {
-//         const table = new DataTables(tipoTableRef.current, {
-//             ...props,
-//         })
+export const TipoDataTable = ({ tipos }) => {
+    const tipoTableRef = useRef(null)
 
-//         return () => {
-//             table.destroy()
-//         }
-//     }, [])
+    useEffect(() => {
+        const table = $(tipoTableRef.current).DataTable({
+            language: {
+                // Personaliza los textos en español
+                sProcessing: 'Procesando...',
+                sLengthMenu: 'Mostrar _MENU_ tipos',
+                sZeroRecords: 'No se encontraron resultados',
+                sEmptyTable: 'Ningún dato disponible en esta tabla',
+                sInfo: 'Mostrando tipos del _START_ al _END_ de un total de _TOTAL_ tipos',
+                sInfoEmpty: 'Mostrando tipos del 0 al 0 de un total de 0 tipos',
+                sInfoFiltered: '(filtrado de un total de _MAX_ tipos)',
+                sInfoPostFix: '',
+                sSearch: 'Buscar:',
+                sUrl: '',
+                sInfoThousands: ',',
+                sLoadingRecords: 'Cargando...',
+                oPaginate: {
+                    sFirst: 'Primero',
+                    sLast: 'Último',
+                    sNext: 'Siguiente',
+                    sPrevious: 'Anterior',
+                },
+                oAria: {
+                    sSortAscending:
+                        ': Activar para ordenar la columna de manera ascendente',
+                    sSortDescending:
+                        ': Activar para ordenar la columna de manera descendente',
+                },
+                buttons: {
+                    copy: 'Copiar',
+                    colvis: 'Visibilidad',
+                },
+            },
+            paging: true, // Habilita la paginación
+            searching: true, // Habilita la búsqueda
+        })
 
-//     return (
-//         <table
-//             ref={tipoTableRef}
-//             id='tipoTable'
-//             className='table table-striped'
-//         ></table>
-//     )
-// }
+        return () => {
+            table.destroy()
+        }
+    }, [])
+
+    return (
+        <table
+            ref={tipoTableRef}
+            id='tipoTable'
+            className='table table-dark table-responsive table-striped'
+        >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th className='text-center'>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {tipos.map((tipo) => {
+                    return <TipoItem key={tipo.id} tipo={tipo}></TipoItem>
+                })}
+            </tbody>
+        </table>
+    )
+}

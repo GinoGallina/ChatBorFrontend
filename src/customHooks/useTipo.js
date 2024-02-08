@@ -6,6 +6,7 @@ export const useTipo = () => {
     const loading = useSelector((state) => state.tipo.loading)
     const tipos = useSelector((state) => state.tipo.tipos)
     const error = useSelector((state) => state.tipo.error)
+    const mensaje = useSelector((state) => state.tipo.mensaje)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -16,5 +17,6 @@ export const useTipo = () => {
         loading,
         tipos,
         error,
+        mensaje,
     }
 }
