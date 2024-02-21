@@ -14,7 +14,10 @@ export const TipoItem = ({ tipo }) => {
             <td>{tipo.descripcion}</td>
             <td>
                 <div className='d-flex justify-content-around'>
-                    <Link className='btn btn-sm btn-outline-primary'>
+                    <Link
+                        to={`edit/${tipo.id}`}
+                        className='btn btn-sm btn-outline-primary'
+                    >
                         Editar
                     </Link>
                     <button

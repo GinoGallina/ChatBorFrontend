@@ -11,6 +11,7 @@ import { TipoView } from './components/Tipo/TipoView.jsx'
 import { AdminRoute } from './containers/Admin/AdminRoute.jsx'
 import { ErrorView } from './components/Vistas/ErrorView.jsx'
 import { CreateTipoComponent } from './components/Tipo/CreateTipoComponent.jsx'
+import { LoginView } from './components/User/LoginView.jsx'
 
 function App() {
     return (
@@ -28,24 +29,9 @@ function App() {
                                 element={<TipoView></TipoView>}
                             ></AdminRoute>
                         }
-                    >
-                        <Route
-                            path='create'
-                            element={
-                                <CreateTipoComponent></CreateTipoComponent>
-                            }
-                        ></Route>
-                        <Route
-                            path=':id'
-                            element={
-                                <AdminRoute
-                                    element={<TipoView></TipoView>}
-                                ></AdminRoute>
-                            }
-                        ></Route>
-                    </Route>
+                    ></Route>
                     <Route
-                        path='/create'
+                        path='/tipos/create'
                         element={
                             <AdminRoute
                                 element={
@@ -53,6 +39,20 @@ function App() {
                                 }
                             ></AdminRoute>
                         }
+                    ></Route>
+                    <Route
+                        path='/tipos/edit/:id'
+                        element={
+                            <AdminRoute
+                                element={
+                                    <CreateTipoComponent></CreateTipoComponent>
+                                }
+                            ></AdminRoute>
+                        }
+                    ></Route>
+                    <Route
+                        path='/login'
+                        element={<LoginView></LoginView>}
                     ></Route>
                     <Route
                         path='/not-found'

@@ -38,7 +38,7 @@
 
 /* Estilo para los mensajes del usuario */
 .mensaje-user {
-    background-color: #2196f3; /* Color de fondo para los mensajes del usuario */
+    background-color: #4f9fe0; /* Color de fondo para los mensajes del usuario */
     color: #fff; /* Color del texto en los mensajes del usuario */
     text-align: left;
 }
@@ -107,11 +107,16 @@
 .btn-reiniciar{
     position: fixed;
     bottom: 15px;
-    right: 15px;
+    right: 8px;
     background-color: #618fb5 !important;
     border: solid !important;
     border-radius: 40px !important;
     color: #45a049;
+}
+
+.btn-reiniciar:hover{
+    background-color: #316189 !important;
+    transition: all ease 0.2s;
 }
 
 /* Estilos para pantallas móviles */
@@ -128,8 +133,24 @@
     }
     
 .main-tipos{
-    /* background: radial-gradient( circle, #f8f8f3, #4a8bc1); */
-    /* background: linear-gradient(45deg, #f8f8f3, #4a8bc1); */
     background: linear-gradient(to bottom, #43a5b9, #1c507a)
-    /* background-color: rgba(255, 255, 255, 0.403); */
+}
+
+#root{
+    position: relative;
+}
+.user-logo-div{
+    position: absolute;
+    top:15px;
+    right:20px;
+    border-radius: 45%;
+    border: solid black;
+    background-color: rgb(235, 235, 197);
+    transition: all 0.3s ease;
+}
+
+.user-logo-div:hover{
+    background-color: rgb(168, 168, 158);
+    transform: scale(1.1); /* Escala el div en 1.1 veces su tamaño original */
+    cursor: pointer;
 }
