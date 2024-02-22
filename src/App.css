@@ -154,3 +154,15 @@
     transform: scale(1.1); /* Escala el div en 1.1 veces su tamaño original */
     cursor: pointer;
 }
+
+/* Navbar */
+.dropdown-menu.show{
+    background-color: rgb(57, 60, 63) !important;    
+}
+.dropdown-item:hover{
+    background-color:red !important;
+    transition: all 0.6s ease;
+    color: white !important;    
+}
+
+

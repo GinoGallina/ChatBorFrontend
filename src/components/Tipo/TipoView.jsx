@@ -26,7 +26,7 @@ export const TipoView = () => {
                             <h1 className='col-8 bold'>Listado de Tipos</h1>
                             <div className='col-4 text-end'>
                                 <Link
-                                    to='/tipos/create'
+                                    to='/admin/tipos/create'
                                     className='btn  btn-success  '
                                 >
                                     <p className='mb-0 fs-4'>Crear Tipo</p>

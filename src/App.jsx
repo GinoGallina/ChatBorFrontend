@@ -5,6 +5,7 @@ import {
     Route,
     Routes,
     Navigate,
+    useNavigate,
 } from 'react-router-dom'
 
 import { TipoView } from './components/Tipo/TipoView.jsx'
@@ -12,10 +13,13 @@ import { AdminRoute } from './containers/Admin/AdminRoute.jsx'
 import { ErrorView } from './components/Vistas/ErrorView.jsx'
 import { CreateTipoComponent } from './components/Tipo/CreateTipoComponent.jsx'
 import { LoginView } from './components/User/LoginView.jsx'
+import { NavbarComponent } from './components/Extra/NavbarComponent.jsx'
 
 function App() {
+    const isAdmin = window.location.href.split('/')[3] == 'admin' ? true : false
     return (
         <>
+            {isAdmin && <NavbarComponent></NavbarComponent>}
             <Router>
                 <Routes>
                     <Route
@@ -23,7 +27,7 @@ function App() {
                         element={<ChatComponent></ChatComponent>}
                     ></Route>
                     <Route
-                        path='/tipos'
+                        path='/admin/tipos'
                         element={
                             <AdminRoute
                                 element={<TipoView></TipoView>}
@@ -31,7 +35,7 @@ function App() {
                         }
                     ></Route>
                     <Route
-                        path='/tipos/create'
+                        path='/admin/tipos/create'
                         element={
                             <AdminRoute
                                 element={
@@ -41,7 +45,7 @@ function App() {
                         }
                     ></Route>
                     <Route
-                        path='/tipos/edit/:id'
+                        path='/admin/tipos/edit/:id'
                         element={
                             <AdminRoute
                                 element={
@@ -51,7 +55,7 @@ function App() {
                         }
                     ></Route>
                     <Route
-                        path='/login'
+                        path='/admin/login'
                         element={<LoginView></LoginView>}
                     ></Route>
                     <Route

@@ -7,7 +7,7 @@ import { LoadingComponent } from '../Extra/LoadingComponent'
 export const CreateTipoComponent = () => {
     let { id } = useParams()
 
-    const [tipo, setTipo] = useState({ id: '', descripcion: '' })
+    const [tipo, setTipo] = useState({ id: '', descripcion: '', mensaje: '' })
     const { handleSubmit, getOneTipo, tipoSeleccionado, loading } = useTipo()
 
     const handleChange = (e) => {
@@ -53,11 +53,22 @@ export const CreateTipoComponent = () => {
                                 </Form.Label>
                                 <Form.Control
                                     type='text'
-                                    className='fs-3'
+                                    className='fs-3 mb-3'
                                     name='descripcion'
                                     value={tipo.descripcion}
                                     onChange={handleChange}
                                     placeholder='Ingrese la descripción'
+                                />
+                                <Form.Label className='fs-3'>
+                                    Mensaje
+                                </Form.Label>
+                                <Form.Control
+                                    type='text'
+                                    className='fs-3'
+                                    name='mensaje'
+                                    value={tipo.mensaje}
+                                    onChange={handleChange}
+                                    placeholder='Ingrese el mensaje'
                                 />
                             </Form.Group>
                             <div className='text-center mt-5 '>

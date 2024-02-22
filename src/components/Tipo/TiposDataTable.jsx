@@ -49,23 +49,26 @@ export const TipoDataTable = ({ tipos }) => {
     }, [])
 
     return (
-        <table
-            ref={tipoTableRef}
-            id='tipoTable'
-            className='table table-dark table-responsive table-striped'
-        >
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Descripción</th>
-                    <th className='text-center'>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {tipos.map((tipo) => {
-                    return <TipoItem key={tipo.id} tipo={tipo}></TipoItem>
-                })}
-            </tbody>
-        </table>
+        <div className='table-responsive'>
+            <table
+                ref={tipoTableRef}
+                id='tipoTable'
+                className='table table-dark  table-striped'
+            >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripción</th>
+                        <th>Mensaje</th>
+                        <th className='text-center'>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tipos.map((tipo) => {
+                        return <TipoItem key={tipo.id} tipo={tipo}></TipoItem>
+                    })}
+                </tbody>
+            </table>
+        </div>
     )
 }

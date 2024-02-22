@@ -21,7 +21,7 @@ export const useUser = () => {
                 html: error,
             }).then((res) => {
                 if (res && error == 'Ya está logueado') {
-                    navigate('/tipos')
+                    navigate('/admin/tipos')
                 }
             })
         }
@@ -32,7 +32,7 @@ export const useUser = () => {
                 html: mensaje,
             }).then((res) => {
                 if (res) {
-                    navigate('/tipos')
+                    navigate('/admin/tipos')
                 }
             })
         }

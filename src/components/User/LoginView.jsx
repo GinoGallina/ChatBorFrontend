@@ -24,7 +24,7 @@ export const LoginView = () => {
     return (
         <div className='main-tipos'>
             <main
-                className='row justify-content-center align-items-center'
+                className='row w-100 justify-content-center align-items-center'
                 style={{ minHeight: '100vh' }}
             >
                 {/* <div className='col-7 card shadow p-3'>

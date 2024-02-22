@@ -41,7 +41,9 @@ export const fetchTipos = createAsyncThunk(FETCH_TIPO, async () => {
 
 export const getOneTipoSlice = createAsyncThunk(GET_ONE_TIPO, async (id) => {
     //const response = await axios.get(api)
-    const response = await fetch(`${api}/${id}`)
+    const response = await fetch(`${api}/${id}`, {
+        credentials: 'include',
+    })
     return handleResponse(response)
 })
 
@@ -52,6 +54,7 @@ export const createTipo = createAsyncThunk(CREATE_TIPO, async (data) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
+        credentials: 'include',
     })
     return handleResponse(response)
 })
@@ -59,6 +62,7 @@ export const createTipo = createAsyncThunk(CREATE_TIPO, async (data) => {
 export const deleteTipo = createAsyncThunk(DELETE_TIPO, async (id) => {
     const response = await fetch(`${api}/delete/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
     })
     return handleResponse(response)
 })
